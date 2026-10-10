@@ -1,30 +1,18 @@
-const TFL_API_KEY =
-
-    "a57ffebedc754a10b7afe72443393861";
+const TFL_API_KEY = "a57ffebedc754a10b7afe72443393861";
 
 async function loadTube() {
 
     try {
 
-        const response =
+        const response = await fetch(
 
-            await fetch(
+            `https://api.tfl.gov.uk/StopPoint/Search/Clapham%20North?app_key=${TFL_API_KEY}`
 
-                `https://api.tfl.gov.uk/StopPoint/940GZZLUCLP/Arrivals?app_key=${TFL_API_KEY}`
+        );
 
-            );
+        const data = await response.json();
 
-        const data =
-
-            await response.json();
-
-        console.log(data);
-
-        document.getElementById(
-
-            "tube-content"
-
-        ).innerHTML =
+        document.getElementById("tube-content").innerHTML =
 
             "<pre>" +
 
@@ -32,19 +20,17 @@ async function loadTube() {
 
             "</pre>";
 
+        console.log(data);
+
     }
 
     catch (error) {
 
         console.error(error);
 
-        document.getElementById(
+        document.getElementById("tube-content").innerHTML =
 
-            "tube-content"
-
-        ).innerHTML =
-
-            "<p>Error loading Tube data.</p>";
+            "Error loading station data";
 
     }
 
