@@ -1,72 +1,140 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Tablet Dashboard</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
 
 </head>
 
 <body>
+
+    <!-- HOME SCREEN -->
+
     <div id="home">
-        
 
         <h1>Tablet Dashboard</h1>
-    
+
         <button onclick="showScreen('dashboard')">
+
             Dashboard
+
         </button>
-    
+
         <button onclick="showScreen('weather')">
+
             Weather
+
         </button>
-    
+
         <button onclick="showScreen('tube')">
+
             Tube
+
         </button>
-    
+
         <button onclick="showScreen('spotify')">
+
             Spotify
+
         </button>
-    
+
         <button onclick="showScreen('radar')">
+
             Sky Radar
+
         </button>
 
     </div>
+
+    <!-- DASHBOARD -->
 
     <div id="dashboard" class="screen">
+
         <h1>Dashboard</h1>
+
+        <button class="home-btn" onclick="goHome()">
+
+            Home
+
+        </button>
+
         <p>Dashboard content goes here.</p>
+
     </div>
 
-     <div id="weather" class="screen">
+    <!-- WEATHER -->
+
+    <div id="weather" class="screen">
+
         <h1>Weather</h1>
+
+        <button class="home-btn" onclick="goHome()">
+
+            Home
+
+        </button>
+
         <p>Weather content goes here.</p>
+
     </div>
 
-     <div id="tube" class="screen">
+    <!-- TUBE -->
+
+    <div id="tube" class="screen">
+
         <h1>Tube</h1>
+
+        <button class="home-btn" onclick="goHome()">
+
+            Home
+
+        </button>
+
         <p>Tube content goes here.</p>
+
     </div>
 
-     <div id="spotify" class="screen">
+    <!-- SPOTIFY -->
+
+    <div id="spotify" class="screen">
+
         <h1>Spotify</h1>
+
+        <button class="home-btn" onclick="goHome()">
+
+            Home
+
+        </button>
+
         <p>Spotify content goes here.</p>
+
     </div>
 
-     <div id="radar" class="screen">
+    <!-- SKY RADAR -->
+
+    <div id="radar" class="screen">
+
         <h1>Sky Radar</h1>
-        <p>Aircraft content goes here.</p>
-    </div>
 
-    
-    
+        <button class="home-btn" onclick="goHome()">
+
+            Home
+
+        </button>
+
+        <p>Aircraft content goes here.</p>
+
+    </div>
 
 </body>
 
