@@ -55,6 +55,17 @@ function showScreen(screenName) {
     ) {
 
         loadTube();
+    }
+
+    if (
+
+        screenName === "spotify" &&
+
+        typeof loadSpotify === "function"
+
+    ) {
+
+        loadSpotify();
 
     }
 
@@ -69,6 +80,7 @@ function showScreen(screenName) {
         loadDashboard();
 
     }
+    
 
 }
 
