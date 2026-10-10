@@ -6,15 +6,15 @@
 
 body {
 
-    margin: 0;
-
-    padding: 20px;
-
     background: #111111;
 
     color: white;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
+
+    margin: 0;
+
+    padding: 20px;
 
     text-align: center;
 
@@ -23,20 +23,6 @@ body {
 h1 {
 
     margin-bottom: 25px;
-
-    font-size: 40px;
-
-}
-
-h2 {
-
-    font-size: 30px;
-
-}
-
-h3 {
-
-    font-size: 24px;
 
 }
 
@@ -50,15 +36,15 @@ button {
 
     margin: 15px auto;
 
+    font-size: 24px;
+
     border: none;
 
     border-radius: 12px;
 
-    background: #2f2f2f;
+    background: #2b2b2b;
 
     color: white;
-
-    font-size: 24px;
 
     cursor: pointer;
 
@@ -66,17 +52,17 @@ button {
 
 button:hover {
 
-    background: #444444;
+    background: #404040;
 
 }
 
 .home-btn {
 
-    width: 160px;
+    width: 180px;
 
     height: 60px;
 
-    font-size: 20px;
+    font-size: 18px;
 
 }
 
@@ -90,11 +76,11 @@ button:hover {
 
     background: #222222;
 
-    padding: 20px;
+    max-width: 500px;
 
     margin: 15px auto;
 
-    max-width: 500px;
+    padding: 20px;
 
     border-radius: 12px;
 
@@ -110,7 +96,7 @@ button:hover {
 
 .weather-description {
 
-    font-size: 28px;
+    font-size: 24px;
 
 }
 
@@ -132,9 +118,9 @@ button:hover {
 
     background: #222222;
 
-    padding: 15px;
-
     border-radius: 12px;
+
+    padding: 15px;
 
 }
 
@@ -142,112 +128,10 @@ button:hover {
 
     background: #333333;
 
-    margin-top: 10px;
-
     padding: 12px;
+
+    margin-top: 10px;
 
     border-radius: 8px;
 
 }
-
-.destination {
-
-    font-size: 20px;
-
-    font-weight: bold;
-
-}
-
-.arrival-time {
-
-    color: #4dc5ff;
-
-    margin-top: 5px;
-
-}
-
-.spotify-controls {
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    margin-top: 20px;
-
-    margin-bottom: 20px;
-
-}
-
-.spotify-artwork {
-
-    width: 250px;
-
-    border-radius: 12px;
-
-    margin-bottom: 20px;
-
-}
-
-.spotify-result {
-
-    background: #222222;
-
-    max-width: 500px;
-
-    margin: 10px auto;
-
-    padding: 12px;
-
-    border-radius: 10px;
-
-}
-
-input {
-
-    width: 320px;
-
-    height: 50px;
-
-    font-size: 18px;
-
-    text-align: center;
-
-    border-radius: 10px;
-
-    border: none;
-
-    margin: 10px;
-
-}
-
-select {
-
-    width: 320px;
-
-    height: 50px;
-
-    font-size: 18px;
-
-    border-radius: 10px;
-
-}
-
-.flight-card {
-
-    background: #222222;
-
-    max-width: 500px;
-
-    margin: 10px auto;
-
-    padding: 12px;
-
-    border-radius: 10px;
-
-}
-
- 
-
- 
