@@ -6,7 +6,7 @@ async function loadTube() {
 
         const response = await fetch(
 
-            `https://api.tfl.gov.uk/StopPoint/Search/Clapham%20North?app_key=${TFL_API_KEY}`
+            `https://api.tfl.gov.uk/StopPoint/940GZZLUCPN/Arrivals?app_key=${TFL_API_KEY}`
 
         );
 
@@ -27,10 +27,6 @@ async function loadTube() {
     catch (error) {
 
         console.error(error);
-
-        document.getElementById("tube-content").innerHTML =
-
-            "Error loading station data";
 
     }
 
