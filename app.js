@@ -12,6 +12,12 @@ function showScreen(screenName) {
 
         .style.display = "block";
 
+    if (screenName === "dashboard") {
+
+        loadDashboard();
+
+    }
+
     if (screenName === "weather") {
 
         loadWeather();
@@ -33,12 +39,6 @@ function showScreen(screenName) {
     if (screenName === "radar") {
 
         loadRadar();
-
-    }
-
-    if (screenName === "dashboard") {
-
-        loadDashboard();
 
     }
 
@@ -64,15 +64,29 @@ function loadDashboard() {
 
         .innerHTML = `
 
-        <h2>Dashboard</h2>
+        <div class="dashboard-card">
 
-        <p>Weather Summary</p>
+            Weather Connected
 
-        <p>Tube Summary</p>
+        </div>
 
-        <p>Spotify Summary</p>
+        <div class="dashboard-card">
 
-        <p>Flights Today</p>
+            TfL Connected
+
+        </div>
+
+        <div class="dashboard-card">
+
+            Spotify Connected
+
+        </div>
+
+        <div class="dashboard-card">
+
+            Sky Radar Connected
+
+        </div>
 
     `;
 
