@@ -17,6 +17,8 @@
     <script src="weather.js" defer></script>
 
     <script src="tube.js" defer></script>
+    
+    <script src="spotify.js" defer></script>
 
 </head>
 
@@ -41,6 +43,12 @@
         <button onclick="showScreen('tube')">
 
             Tube
+
+        </button>
+
+        <button onclick="showScreen('spotify')">
+
+            Spotify
 
         </button>
 
@@ -105,6 +113,24 @@
         </div>
 
     </div>
+
+    <div id="spotify" class="screen">
+
+    <h1>Spotify</h1>
+
+    <button class="home-btn"
+
+            onclick="goHome()">
+
+        Home
+
+    </button>
+
+    <div id="spotify-content">
+
+    </div>
+
+</div>
 
 </body>
 
