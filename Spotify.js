@@ -1,4 +1,6 @@
-const SPOTIFY_CLIENT_ID = "be2d438b383541cdb7e09a2a57f8a15a";
+const SPOTIFY_CLIENT_ID =
+
+    "YOUR_CLIENT_ID";
 
 let spotifyToken = "";
 
@@ -12,11 +14,7 @@ function spotifyLogin() {
 
     const scopes =
 
-        "user-read-playback-state " +
-
-        "user-read-currently-playing " +
-
-        "user-modify-playback-state";
+        "user-read-currently-playing user-read-playback-state";
 
     const authUrl =
 
@@ -26,9 +24,13 @@ function spotifyLogin() {
 
         "&response_type=token" +
 
-        "&redirect_uri=" + encodeURIComponent(redirectUri) +
+        "&redirect_uri=" +
 
-        "&scope=" + encodeURIComponent(scopes);
+        encodeURIComponent(redirectUri) +
+
+        "&scope=" +
+
+        encodeURIComponent(scopes);
 
     window.location.href = authUrl;
 
@@ -36,15 +38,29 @@ function spotifyLogin() {
 
 function getSpotifyToken() {
 
-    const hash = window.location.hash;
+    const hash =
 
-    if (hash.includes("access_token")) {
+        window.location.hash;
+
+    if (
+
+        hash &&
+
+        hash.includes("access_token")
+
+    ) {
+
+        const params =
+
+            new URLSearchParams(
+
+                hash.substring(1)
+
+            );
 
         spotifyToken =
 
-            hash.split("&")[0]
-
-                .split("=")[1];
+            params.get("access_token");
 
         localStorage.setItem(
 
@@ -56,9 +72,9 @@ function getSpotifyToken() {
 
         history.replaceState(
 
-            null,
+            {},
 
-            null,
+            document.title,
 
             window.location.pathname
 
@@ -80,15 +96,25 @@ function getSpotifyToken() {
 
 }
 
-async function loadSpotify() {
+function loadSpotify() {
 
     getSpotifyToken();
 
     if (!spotifyToken) {
 
-        document.getElementById("spotify-content")
+        document.getElementById(
 
-            .innerHTML = `
+            "spotify-content"
+
+        ).innerHTML = `
+
+            <h2>Spotify</h2>
+
+            <p>
+
+                Not Connected
+
+            </p>
 
             <button onclick="spotifyLogin()">
 
@@ -102,370 +128,24 @@ async function loadSpotify() {
 
     }
 
-    document.getElementById("spotify-content")
-
-        .innerHTML = `
-
-        <div id="spotify-now-playing">
-
-            Loading Spotify...
-
-        </div>
-
-    `;
-
-    loadCurrentTrack();
-
-}
-
-async function loadCurrentTrack() {
-
-    try {
-
-        const response = await fetch(
-
-            "https://api.spotify.com/v1/me/player/currently-playing",
-
-            {
-
-                headers: {
-
-                    Authorization:
-
-                        "Bearer " + spotifyToken
-
-                }
-
-            }
-
-        );
-
-        const data = await response.json();
-
-        const image =
-
-            data.item.album.images[0].url;
-
-        document.getElementById(
-
-            "spotify-now-playing"
-
-        ).innerHTML = `
-
-            ${image}
-
-            <h2>${data.item.name}</h2>
-
-            <h3>
-
-                ${data.item.artists[0].name}
-
-            </h3>
-
-            <div class="spotify-controls">
-
-                <button onclick="previousTrack()">
-
-                    ◀◀
-
-                </button>
-
-                <button onclick="pausePlayback()">
-
-                    ⏸
-
-                </button>
-
-                <button onclick="nextTrack()">
-
-                    ▶▶
-
-                </button>
-
-            </div>
-
-            <hr>
-
-            <h3>Playback Device</h3>
-
-            <select id="deviceSelect">
-
-            </select>
-
-            <hr>
-
-            <input
-
-                id="searchBox"
-
-                placeholder="Search Spotify">
-
-            <button onclick="searchSpotify()">
-
-                Search
-
-            </button>
-
-            <div id="searchResults">
-
-            </div>
-
-        `;
-
-        loadDevices();
-
-    } catch {
-
-        document.getElementById(
-
-            "spotify-now-playing"
-
-        ).innerHTML =
-
-            "No active Spotify session found.";
-
-    }
-
-}
-
-async function loadDevices() {
-
-    const response = await fetch(
-
-        "https://api.spotify.com/v1/me/player/devices",
-
-        {
-
-            headers: {
-
-                Authorization:
-
-                    "Bearer " + spotifyToken
-
-            }
-
-        }
-
-    );
-
-    const data =
-
-        await response.json();
-
-    const select =
-
-        document.getElementById(
-
-            "deviceSelect"
-
-        );
-
-    if (!select) return;
-
-    select.innerHTML = "";
-
-    data.devices.forEach(device => {
-
-        const option =
-
-            document.createElement("option");
-
-        option.value = device.id;
-
-        option.textContent =
-
-            device.name;
-
-        select.appendChild(option);
-
-    });
-
-}
-
-async function searchSpotify() {
-
-    const searchTerm =
-
-        document.getElementById(
-
-            "searchBox"
-
-        ).value;
-
-    const response =
-
-        await fetch(
-
-            `https://api.spotify.com/v1/search?q=${encodeURIComponent(searchTerm)}&type=track&limit=10`,
-
-            {
-
-                headers: {
-
-                    Authorization:
-
-                        "Bearer " + spotifyToken
-
-                }
-
-            }
-
-        );
-
-    const data =
-
-        await response.json();
-
-    let html = "";
-
-    data.tracks.items.forEach(track => {
-
-        html += `
-
-            <div class="spotify-result">
-
-                <strong>
-
-                    ${track.name}
-
-                </strong>
-
-                <br>
-
-                ${track.artists[0].name}
-
-                <br><br>
-
-                <button onclick="playTrack('${track.uri}')">
-
-                    Play
-
-                </button>
-
-            </div>
-
-        `;
-
-    });
-
     document.getElementById(
 
-        "searchResults"
+        "spotify-content"
 
-    ).innerHTML = html;
+    ).innerHTML = `
 
-}
+        <h2>
 
-async function playTrack(uri) {
+            Spotify Connected
 
-    const deviceId =
+        </h2>
 
-        document.getElementById(
+        <p>
 
-            "deviceSelect"
+            Authentication Successful
 
-        ).value;
+        </p>
 
-    await fetch(
-
-        `https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`,
-
-        {
-
-            method: "PUT",
-
-            headers: {
-
-                Authorization:
-
-                    "Bearer " + spotifyToken,
-
-                "Content-Type":
-
-                    "application/json"
-
-            },
-
-            body: JSON.stringify({
-
-                uris: [uri]
-
-            })
-
-        }
-
-    );
-
-}
-
-async function pausePlayback() {
-
-    await fetch(
-
-        "https://api.spotify.com/v1/me/player/pause",
-
-        {
-
-            method: "PUT",
-
-            headers: {
-
-                Authorization:
-
-                    "Bearer " + spotifyToken
-
-            }
-
-        }
-
-    );
-
-}
-
-async function nextTrack() {
-
-    await fetch(
-
-        "https://api.spotify.com/v1/me/player/next",
-
-        {
-
-            method: "POST",
-
-            headers: {
-
-                Authorization:
-
-                    "Bearer " + spotifyToken
-
-            }
-
-        }
-
-    );
-
-}
-
-async function previousTrack() {
-
-    await fetch(
-
-        "https://api.spotify.com/v1/me/player/previous",
-
-        {
-
-            method: "POST",
-
-            headers: {
-
-                Authorization:
-
-                    "Bearer " + spotifyToken
-
-            }
-
-        }
-
-    );
+    `;
 
 }
