@@ -1,6 +1,6 @@
 const SPOTIFY_CLIENT_ID =
 
-    "YOUR_CLIENT_ID";
+    "be2d438b383541cdb7e09a2a57f8a15a";
 
 let spotifyToken = "";
 
