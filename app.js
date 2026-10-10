@@ -1,6 +1,12 @@
 function showScreen(screenName) {
 
-    document.getElementById("home").style.display = "none";
+    const home = document.getElementById("home");
+
+    if (home) {
+
+        home.style.display = "none";
+
+    }
 
     document.querySelectorAll(".screen").forEach(screen => {
 
@@ -8,37 +14,59 @@ function showScreen(screenName) {
 
     });
 
-    document.getElementById(screenName)
+    const selectedScreen =
 
-        .style.display = "block";
+        document.getElementById(screenName);
 
-    if (screenName === "dashboard") {
+    if (!selectedScreen) {
 
-        loadDashboard();
+        console.error(
+
+            "Screen not found:",
+
+            screenName
+
+        );
+
+        return;
 
     }
 
-    if (screenName === "weather") {
+    selectedScreen.style.display = "block";
+
+    if (
+
+        screenName === "weather" &&
+
+        typeof loadWeather === "function"
+
+    ) {
 
         loadWeather();
 
     }
 
-    if (screenName === "tube") {
+    if (
+
+        screenName === "tube" &&
+
+        typeof loadTube === "function"
+
+    ) {
 
         loadTube();
 
     }
 
-    if (screenName === "spotify") {
+    if (
 
-        loadSpotify();
+        screenName === "dashboard" &&
 
-    }
+        typeof loadDashboard === "function"
 
-    if (screenName === "radar") {
+    ) {
 
-        loadRadar();
+        loadDashboard();
 
     }
 
@@ -46,11 +74,13 @@ function showScreen(screenName) {
 
 function goHome() {
 
-    document.querySelectorAll(".screen").forEach(screen => {
+    document.querySelectorAll(".screen")
 
-        screen.style.display = "none";
+        .forEach(screen => {
 
-    });
+            screen.style.display = "none";
+
+        });
 
     document.getElementById("home")
 
@@ -60,31 +90,21 @@ function goHome() {
 
 function loadDashboard() {
 
-    document.getElementById("dashboard-content")
+    document.getElementById(
 
-        .innerHTML = `
+        "dashboard-content"
+
+    ).innerHTML = `
 
         <div class="dashboard-card">
 
-            Weather Connected
+            Weather API Connected
 
         </div>
 
         <div class="dashboard-card">
 
-            TfL Connected
-
-        </div>
-
-        <div class="dashboard-card">
-
-            Spotify Connected
-
-        </div>
-
-        <div class="dashboard-card">
-
-            Sky Radar Connected
+            TfL API Ready
 
         </div>
 
