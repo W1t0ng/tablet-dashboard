@@ -1,4 +1,4 @@
-const OPENWEATHER_API_KEY = "mykey";
+const OPENWEATHER_API_KEY = "aaeabdba05019d0f7e3d78812930efbb";
 
 async function loadWeather() {
 
