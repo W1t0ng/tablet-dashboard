@@ -6,10 +6,6 @@
 
 body {
 
-    margin: 0;
-
-    padding: 20px;
-
     background: #111;
 
     color: white;
@@ -18,51 +14,43 @@ body {
 
     text-align: center;
 
+    padding: 20px;
+
+    margin: 0;
+
 }
 
 h1 {
 
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 
 }
 
 button {
 
-    display: block;
+    width: 300px;
 
-    width: 280px;
-
-    height: 70px;
+    height: 80px;
 
     margin: 15px auto;
 
+    display: block;
+
     font-size: 24px;
-
-    background: #1e1e1e;
-
-    color: white;
-
-    border: 2px solid #444;
 
     border-radius: 12px;
 
-    cursor: pointer;
+    border: none;
+
+    background: #2a2a2a;
+
+    color: white;
 
 }
 
 button:hover {
 
-    background: #2d2d2d;
-
-}
-
-.home-btn {
-
-    width: 180px;
-
-    height: 55px;
-
-    font-size: 20px;
+    background: #444;
 
 }
 
@@ -72,10 +60,16 @@ button:hover {
 
 }
 
-p {
+#weather-content,
+
+#tube-content,
+
+#spotify-content,
+
+#radar-content,
+
+#dashboard-content {
+
+    margin-top: 20px;
 
     font-size: 22px;
-
-    margin-top: 40px;
-
-}
