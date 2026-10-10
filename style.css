@@ -22,17 +22,15 @@ body {
 
 h1 {
 
-    font-size: 40px;
+    margin-bottom: 25px;
 
-    margin-bottom: 30px;
+    font-size: 40px;
 
 }
 
 h2 {
 
-    font-size: 32px;
-
-    margin-bottom: 25px;
+    font-size: 30px;
 
 }
 
@@ -40,39 +38,45 @@ h3 {
 
     font-size: 24px;
 
-    margin-bottom: 15px;
-
 }
 
 button {
 
     display: block;
 
-    width: 300px;
+    width: 320px;
 
     height: 80px;
 
     margin: 15px auto;
 
-    background: #262626;
-
-    color: white;
-
     border: none;
 
     border-radius: 12px;
+
+    background: #2f2f2f;
+
+    color: white;
 
     font-size: 24px;
 
     cursor: pointer;
 
-    transition: 0.2s;
-
 }
 
 button:hover {
 
-    background: #3a3a3a;
+    background: #444444;
+
+}
+
+.home-btn {
+
+    width: 160px;
+
+    height: 60px;
+
+    font-size: 20px;
 
 }
 
@@ -82,87 +86,19 @@ button:hover {
 
 }
 
-.home-btn {
+.dashboard-card {
 
-    width: 180px;
+    background: #222222;
 
-    height: 60px;
+    padding: 20px;
 
-    font-size: 20px;
+    margin: 15px auto;
 
-}
+    max-width: 500px;
 
-#weather-content,
-
-#tube-content,
-
-#spotify-content,
-
-#radar-content,
-
-#dashboard-content {
-
-    margin-top: 20px;
+    border-radius: 12px;
 
 }
-
-/* TUBE SCREEN */
-
-.tube-grid {
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 20px;
-
-    margin-top: 20px;
-
-}
-
-.tube-column {
-
-    width: 45%;
-
-    background: #1e1e1e;
-
-    border-radius: 15px;
-
-    padding: 15px;
-
-}
-
-.train-card {
-
-    background: #2b2b2b;
-
-    border-radius: 10px;
-
-    padding: 12px;
-
-    margin-bottom: 10px;
-
-}
-
-.destination {
-
-    font-size: 20px;
-
-    font-weight: bold;
-
-}
-
-.arrival-time {
-
-    font-size: 18px;
-
-    margin-top: 5px;
-
-    color: #66d9ff;
-
-}
-
-/* WEATHER */
 
 .weather-temp {
 
@@ -178,23 +114,71 @@ button:hover {
 
 }
 
-/* DASHBOARD */
+.tube-grid {
 
-.dashboard-card {
+    display: flex;
 
-    background: #1e1e1e;
+    gap: 20px;
 
-    padding: 15px;
+    justify-content: center;
 
-    margin: 15px auto;
-
-    max-width: 500px;
-
-    border-radius: 15px;
+    margin-top: 20px;
 
 }
 
-/* SPOTIFY */
+.tube-column {
+
+    width: 45%;
+
+    background: #222222;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+}
+
+.train-card {
+
+    background: #333333;
+
+    margin-top: 10px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+}
+
+.destination {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+.arrival-time {
+
+    color: #4dc5ff;
+
+    margin-top: 5px;
+
+}
+
+.spotify-controls {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 20px;
+
+    margin-bottom: 20px;
+
+}
 
 .spotify-artwork {
 
@@ -202,22 +186,68 @@ button:hover {
 
     border-radius: 12px;
 
-    margin: 0 auto 20px auto;
+    margin-bottom: 20px;
 
 }
 
-/* RADAR */
+.spotify-result {
 
-.flight-card {
-
-    background: #1e1e1e;
-
-    padding: 12px;
-
-    margin: 10px auto;
+    background: #222222;
 
     max-width: 500px;
 
-    border-radius: 12px;
+    margin: 10px auto;
+
+    padding: 12px;
+
+    border-radius: 10px;
 
 }
+
+input {
+
+    width: 320px;
+
+    height: 50px;
+
+    font-size: 18px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    border: none;
+
+    margin: 10px;
+
+}
+
+select {
+
+    width: 320px;
+
+    height: 50px;
+
+    font-size: 18px;
+
+    border-radius: 10px;
+
+}
+
+.flight-card {
+
+    background: #222222;
+
+    max-width: 500px;
+
+    margin: 10px auto;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+}
+
+ 
+
+ 
