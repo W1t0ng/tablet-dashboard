@@ -6,7 +6,9 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+
+          content="width=device-width, initial-scale=1.0">
 
     <title>Tablet Dashboard</title>
 
@@ -14,11 +16,17 @@
 
     <script src="app.js" defer></script>
 
+    <script src="weather.js" defer></script>
+
+    tube.jsscript>
+
+    spotify.jsscript>
+
+    radar.jsscript>
+
 </head>
 
 <body>
-
-    <!-- HOME SCREEN -->
 
     <div id="home">
 
@@ -56,83 +64,93 @@
 
     </div>
 
-    <!-- DASHBOARD -->
-
     <div id="dashboard" class="screen">
 
         <h1>Dashboard</h1>
 
-        <button class="home-btn" onclick="goHome()">
+        <button onclick="goHome()">
 
             Home
 
         </button>
 
-        <p>Dashboard content goes here.</p>
+        <div id="dashboard-content">
+
+            <p>Loading dashboard...</p>
+
+        </div>
 
     </div>
-
-    <!-- WEATHER -->
 
     <div id="weather" class="screen">
 
         <h1>Weather</h1>
 
-        <button class="home-btn" onclick="goHome()">
+        <button onclick="goHome()">
 
             Home
 
         </button>
 
-        <p>Weather content goes here.</p>
+        <div id="weather-content">
+
+            <p>Loading weather...</p>
+
+        </div>
 
     </div>
-
-    <!-- TUBE -->
 
     <div id="tube" class="screen">
 
         <h1>Tube</h1>
 
-        <button class="home-btn" onclick="goHome()">
+        <button onclick="goHome()">
 
             Home
 
         </button>
 
-        <p>Tube content goes here.</p>
+        <div id="tube-content">
+
+            <p>Loading tube data...</p>
+
+        </div>
 
     </div>
-
-    <!-- SPOTIFY -->
 
     <div id="spotify" class="screen">
 
         <h1>Spotify</h1>
 
-        <button class="home-btn" onclick="goHome()">
+        <button onclick="goHome()">
 
             Home
 
         </button>
 
-        <p>Spotify content goes here.</p>
+        <div id="spotify-content">
+
+            <p>Loading Spotify...</p>
+
+        </div>
 
     </div>
-
-    <!-- SKY RADAR -->
 
     <div id="radar" class="screen">
 
         <h1>Sky Radar</h1>
 
-        <button class="home-btn" onclick="goHome()">
+        <button onclick="goHome()">
 
             Home
 
         </button>
 
-        <p>Aircraft content goes here.</p>
+        <div id="radar-content">
+
+            <p>Loading aircraft...</p>
+
+        </div>
 
     </div>
 
