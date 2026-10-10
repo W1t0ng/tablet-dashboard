@@ -1,38 +1,74 @@
-const OPENWEATHER_API_KEY = "aaeabdba05019d0f7e3d78812930efbb";
+const OPENWEATHER_API_KEY =
+
+    "aaeabdba05019d0f7e3d78812930efbb";
 
 async function loadWeather() {
 
     try {
 
-        const response = await fetch(
+        const response =
 
-            `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=${OPENWEATHER_API_KEY}`
+            await fetch(
 
-        );
+                `https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=${OPENWEATHER_API_KEY}`
 
-        const data = await response.json();
+            );
 
-        document.getElementById("weather-content")
+        const data =
 
-            .innerHTML = `
+            await response.json();
+
+        document.getElementById(
+
+            "weather-content"
+
+        ).innerHTML = `
 
             <h2>${data.name}</h2>
 
-            <h1>${Math.round(data.main.temp)}°C</h1>
+            <div class="weather-temp">
 
-            <p>${data.weather[0].description}</p>
+                ${Math.round(data.main.temp)}°C
 
-            <p>Humidity ${data.main.humidity}%</p>
+            </div>
 
-            <p>Wind ${data.wind.speed} m/s</p>
+            <div class="weather-description">
+
+                ${data.weather[0].description}
+
+            </div>
+
+            <p>
+
+                Humidity:
+
+                ${data.main.humidity}%
+
+            </p>
+
+            <p>
+
+                Wind:
+
+                ${data.wind.speed} m/s
+
+            </p>
 
         `;
 
-    } catch {
+    }
 
-        document.getElementById("weather-content")
+    catch (error) {
 
-            .innerHTML = "Unable to load weather";
+        console.error(error);
+
+        document.getElementById(
+
+            "weather-content"
+
+        ).innerHTML =
+
+            "Unable to load weather.";
 
     }
 
