@@ -1,32 +1,204 @@
-const TFL_API_KEY = "a57ffebedc754a10b7afe72443393861";
+const TFL_API_KEY =
+
+    "a57ffebedc754a10b7afe72443393861";
 
 async function loadTube() {
 
     try {
 
-        const response = await fetch(
+        const response =
 
-            `https://api.tfl.gov.uk/StopPoint/940GZZLUCPN/Arrivals?app_key=${TFL_API_KEY}`
+            await fetch(
+
+                `https://api.tfl.gov.uk/StopPoint/940GZZLUCPN/Arrivals?app_key=${TFL_API_KEY}`
+
+            );
+
+        const data =
+
+            await response.json();
+
+        data.sort(
+
+            (a, b) =>
+
+                a.timeToStation -
+
+                b.timeToStation
 
         );
 
-        const data = await response.json();
+        const northbound =
 
-        document.getElementById("tube-content").innerHTML =
+            data
 
-            "<pre>" +
+                .filter(
 
-            JSON.stringify(data, null, 2) +
+                    train =>
 
-            "</pre>";
+                        train.platformName &&
 
-        console.log(data);
+                        train.platformName.includes(
+
+                            "Northbound"
+
+                        )
+
+                )
+
+                .slice(0, 3);
+
+        const southbound =
+
+            data
+
+                .filter(
+
+                    train =>
+
+                        train.platformName &&
+
+                        train.platformName.includes(
+
+                            "Southbound"
+
+                        )
+
+                )
+
+                .slice(0, 3);
+
+        let northHtml = "";
+
+        let southHtml = "";
+
+        northbound.forEach(train => {
+
+            northHtml += `
+
+                <div class="train-card">
+
+                    <strong>
+
+                        ${train.destinationName}
+
+                    </strong>
+
+                    <br>
+
+                    ${Math.max(
+
+                        1,
+
+                        Math.floor(
+
+                            train.timeToStation / 60
+
+                        )
+
+                    )} mins
+
+                    <br><br>
+
+                    ${train.towards}
+
+                </div>
+
+            `;
+
+        });
+
+        southbound.forEach(train => {
+
+            southHtml += `
+
+                <div class="train-card">
+
+                    <strong>
+
+                        ${train.destinationName}
+
+                    </strong>
+
+                    <br>
+
+                    ${Math.max(
+
+                        1,
+
+                        Math.floor(
+
+                            train.timeToStation / 60
+
+                        )
+
+                    )} mins
+
+                    <br><br>
+
+                    ${train.towards}
+
+                </div>
+
+            `;
+
+        });
+
+        document.getElementById(
+
+            "tube-content"
+
+        ).innerHTML = `
+
+            <h2>
+
+                Clapham North
+
+            </h2>
+
+            <div class="tube-grid">
+
+                <div class="tube-column">
+
+                    <h3>
+
+                        Northbound
+
+                    </h3>
+
+                    ${northHtml}
+
+                </div>
+
+                <div class="tube-column">
+
+                    <h3>
+
+                        Southbound
+
+                    </h3>
+
+                    ${southHtml}
+
+                </div>
+
+            </div>
+
+        `;
 
     }
 
     catch (error) {
 
         console.error(error);
+
+        document.getElementById(
+
+            "tube-content"
+
+        ).innerHTML =
+
+            "Unable to load TfL data.";
 
     }
 
