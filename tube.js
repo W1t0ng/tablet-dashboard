@@ -1,42 +1,73 @@
-const TFL_APP_KEY = "a57ffebedc754a10b7afe72443393861";
+
+const TFL_API_KEY =
+
+    "a57ffebedc754a10b7afe72443393861";
 
 async function loadTube() {
 
     try {
 
-        document.getElementById("tube-content").innerHTML =
+        const response =
 
-            "<p>Loading Tube data...</p>";
+            await fetch(
 
-        const response = await fetch(
+                `https://api.tfl.gov.uk/StopPoint/940GZZLUCLP/Arrivals?app_key=${TFL_API_KEY}`
 
-            `https://api.tfl.gov.uk/StopPoint/940GZZLUCLP/Arrivals?app_key=${TFL_APP_KEY}`
+            );
+
+        const data =
+
+            await response.json();
+
+        data.sort(
+
+            (a, b) =>
+
+                a.timeToStation -
+
+                b.timeToStation
 
         );
 
-        const data = await response.json();
+        const northbound =
 
-        data.sort((a, b) => a.timeToStation - b.timeToStation);
+            data
 
-        const northbound = data
+                .filter(
 
-            .filter(train =>
+                    train =>
 
-                train.platformName &&
+                        train.platformName &&
 
-                train.platformName.includes("Northbound"))
+                        train.platformName.includes(
 
-            .slice(0, 3);
+                            "Northbound"
 
-        const southbound = data
+                        )
 
-            .filter(train =>
+                )
 
-                train.platformName &&
+                .slice(0, 3);
 
-                train.platformName.includes("Southbound"))
+        const southbound =
 
-            .slice(0, 3);
+            data
+
+                .filter(
+
+                    train =>
+
+                        train.platformName &&
+
+                        train.platformName.includes(
+
+                            "Southbound"
+
+                        )
+
+                )
+
+                .slice(0, 3);
 
         let northHtml = "";
 
@@ -48,17 +79,25 @@ async function loadTube() {
 
                 <div class="train-card">
 
-                    <div class="destination">
+                    <strong>
 
                         ${train.destinationName}
 
-                    </div>
+                    </strong>
 
-                    <div class="arrival-time">
+                    <br>
 
-                        ${Math.max(1, Math.floor(train.timeToStation / 60))} mins
+                    ${Math.max(
 
-                    </div>
+                        1,
+
+                        Math.floor(
+
+                            train.timeToStation / 60
+
+                        )
+
+                    )} mins
 
                 </div>
 
@@ -72,17 +111,25 @@ async function loadTube() {
 
                 <div class="train-card">
 
-                    <div class="destination">
+                    <strong>
 
                         ${train.destinationName}
 
-                    </div>
+                    </strong>
 
-                    <div class="arrival-time">
+                    <br>
 
-                        ${Math.max(1, Math.floor(train.timeToStation / 60))} mins
+                    ${Math.max(
 
-                    </div>
+                        1,
+
+                        Math.floor(
+
+                            train.timeToStation / 60
+
+                        )
+
+                    )} mins
 
                 </div>
 
@@ -90,7 +137,11 @@ async function loadTube() {
 
         });
 
-        document.getElementById("tube-content").innerHTML = `
+        document.getElementById(
+
+            "tube-content"
+
+        ).innerHTML = `
 
             <h2>Clapham North</h2>
 
@@ -100,7 +151,7 @@ async function loadTube() {
 
                     <h3>Northbound</h3>
 
-                    ${northHtml || "<p>No trains found</p>"}
+                    ${northHtml}
 
                 </div>
 
@@ -108,7 +159,7 @@ async function loadTube() {
 
                     <h3>Southbound</h3>
 
-                    ${southHtml || "<p>No trains found</p>"}
+                    ${southHtml}
 
                 </div>
 
@@ -122,15 +173,14 @@ async function loadTube() {
 
         console.error(error);
 
-        document.getElementById("tube-content").innerHTML = `
+        document.getElementById(
 
-            <h2>Clapham North</h2>
+            "tube-content"
 
-            <p>Unable to load live TfL data.</p>
+        ).innerHTML =
 
-        `;
+            "Unable to load TfL data.";
 
     }
 
 }
- 
